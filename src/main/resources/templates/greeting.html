@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Getting Started: Serving Web Content</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+	function doFunction() 
+	{
+		var file = document.querySelector('input[name="file"]').files[0]
+		uploadFile(file)
+    	
+	} 
+	function uploadFile (file) {
+	    var reader = new FileReader();
+		
+		reader.onload = function(evt) {
+	        if(evt.target.readyState != 2) return;
+	        if(evt.target.error) {
+	            alert('Error while reading file');
+	            return;
+	        }
+
+	        var filecontent = evt.target.result;
+	        console.log(filecontent)
+	        
+	        $.ajax({
+	        	url: "/upload",
+	        	method: "POST",
+	        	headers: {
+	                'Content-Type': 'application/xml',
+	              },
+	              data: filecontent,
+	        	success: function (resposne) {
+	        		alert("success");
+	        	},
+	        	error: function(result) {
+    	            alert('Something went wrong');
+    	        }
+	        }) 
+	        
+	    };
+
+	    reader.readAsText(file);
+	}
+</script>
+
+</head>
+<body>
+	<button onclick="doFunction();">Click</button>
+	<input type="file" name="file" />
+</body>
+</html>

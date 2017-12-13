@@ -1,0 +1,1 @@
+{"id":100,"name":"James","className":"X","subjects":[{"id":131,"name":"Maths","marks":88},{"id":132,"name":"Physics","marks":89},{"id":133,"name":"Chemistry","marks":78},{"id":134,"name":"Biology","marks":97},{"id":135,"name":"English","marks":78}],"rank":1,"total":430,"result":"PASS","processed":true}
